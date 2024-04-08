@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get 'positions/new'
   get 'positions/edit'
   get 'positions/show'
-  get 'companies/new'
-  get 'companies/edit'
+  resources :companies, only:[:new, :edit, :create, :update]
+  resources :positions
+  resources :applicants, only:[:new, :index, :create]
   root "home#index"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
