@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
   def new
-    @company = Company.new
+    @company = current_user.build_company
   end
 
   def edit
+    @company = current_user.company
   end
 
   def create
@@ -20,11 +21,18 @@ class CompaniesController < ApplicationController
 
 
   def update
+    @company = current_user.company
+    if @company.update(company_params)
+      flash[:notice] = 'Empresa atualizada com sucesso.'
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
 
   def company_params
-    params.require(:company).permit(:name, :url, :logo)
+    params.require(:company).permit(:id, :name, :url, :logo)
   end
 end
