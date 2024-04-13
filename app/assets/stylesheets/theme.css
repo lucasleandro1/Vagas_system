@@ -4,7 +4,8 @@ body {
 }
 
 body {
-  padding-top: 56px;
+  padding-top: 20px;
+  background-color: #f5f7fb !important;
 }
 
 @media (max-width: 991.98px) {
@@ -56,4 +57,19 @@ body {
 
 .company-logo{
   width: 100px;
+}
+
+.container{
+  padding: 10px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  box-shadow: 0px 0px 6px #888;
+  margin: 5px auto 40px auto;
+}
+
+.btnout {
+  border: none;
+  background-color: transparent;
+  padding: 0;;
 }
