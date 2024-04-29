@@ -1,5 +1,5 @@
 class PositionsController < ApplicationController
-  before_action :set_company
+  before_action :set_company, :set_i18n_careers, :set_i18n_contracts
 
   def index
     @positions = @company.positions.all
@@ -30,7 +30,10 @@ class PositionsController < ApplicationController
   end
 
   def set_i18n_careers
-    @carrers = []
-    Position.carrers
+    @careers = I18n.t('activerecord.attributes.position.careers')
+  end
+
+  def set_i18n_contracts
+    @contracts = I18n.t('activerecord.attributes.position.contracts')
   end
 end
