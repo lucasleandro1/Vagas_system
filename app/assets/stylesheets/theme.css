@@ -83,3 +83,8 @@ body {
   background-color: #f5f7fb;
   color: black !important;
 }
+
+#the-count {
+  text-align: right;
+  margin: 5px 0px;
+}
