@@ -7,7 +7,6 @@ class PositionsController < ApplicationController
 
   def new
     @position = @company.positions.new
-    @carres = set_i18n_careers
   end
 
   def edit
@@ -18,6 +17,14 @@ class PositionsController < ApplicationController
 
   def create
     @position = @company.positions.new(params_position)
+    if @position.save
+      flash[:sucess] = "Vaga cadastrada com sucesso"
+      redirect_to positions_path
+    else
+      render :new
+    end
+
+
   end
 
   def update
