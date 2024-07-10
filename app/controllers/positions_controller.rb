@@ -1,5 +1,6 @@
 class PositionsController < ApplicationController
   before_action :set_company, :set_i18n_careers, :set_i18n_contracts
+  before_action :set_position, only: [:edit, :show, :update]
 
   def index
     @positions = @company.positions.all
@@ -23,11 +24,15 @@ class PositionsController < ApplicationController
     else
       render :new
     end
-
-
   end
 
   def update
+    if @position.update(params_position)
+      flash[:notice] = 'Vaga atualizada com sucesso.'
+      redirect_to positions_path_path
+    else
+      render :edit
+    end
   end
 
   private
