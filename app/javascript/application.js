@@ -11,4 +11,5 @@ import { application } from "controllers/application"
   document.querySelector('#navbarSideCollapse').addEventListener('click', () => {
     document.querySelector('.offcanvas-collapse').classList.toggle('open')
   })
-})()
+})()import "trix"
+import "@rails/actiontext"
