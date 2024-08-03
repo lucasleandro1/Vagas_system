@@ -6,13 +6,26 @@
   <%= f.input :publish %>
   <%= f.input :city %>
   <%= f.input :state,  label_method: :second, value_method: :first, include_blank: false%>
-  <%= f.input :summary%>
+  <%= f.input :summary, maxlength: 360, input_html: { class: "searchTxt", rows: 4 } %>
+  <%= javascript_include_tag 'application' %>
   <div id="the-count">
-    <span id="current">0</span>
+    <span id="inputSize"></span>
     <span id="maximun">/ 360</span>
   </div>
   <div class="field">
     <%= f.rich_text_area :description %>
   </div>
   <%= f.button :submit, class: 'btn btn-primary' %>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var inputElement = document.getElementById('position_summary');
+    var sizeSpan = document.getElementById('inputSize');
+    function updateInputSize() {
+      var sizeInput = inputElement.value.length;
+      sizeSpan.textContent = 'Length: ' + sizeInput;
+    }
+    updateInputSize();
+    inputElement.addEventListener('input', updateInputSize);
+  });
+</script>
 <% end %>
